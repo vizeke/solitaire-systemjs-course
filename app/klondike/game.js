@@ -4,6 +4,8 @@
   angular.module("klondike.game", [])
     .service("klondikeGame", ["scoring", KlondikeGame]);
 
+
+
   function KlondikeGame(scoring) {
     this.newGame = function newGame() {
       var cards = new Deck().shuffled();
