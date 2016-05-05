@@ -11,7 +11,7 @@ describe("A tableau pile", function () {
   it("that is empty will accept a king", function () {
     var king = new Card({rank: "King", suit: "Clubs"});
     var tableau = new TableauPile();
-
+ 
     var accepted = tableau.drop(king);
 
     expect(accepted).toBe(true);
