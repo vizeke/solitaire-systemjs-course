@@ -1,14 +1,11 @@
-(function () {
-  "use strict";
+import Deck from "../cards/deck.js";
+import TableauPile from "./piles/tableauPile.js";
+import RemainderPile from "./piles/remainderPile.js";
+import FoundationPile from "./piles/foundationPile.js";
+import _ from "underscore";
 
   angular.module("klondike.game", [])
     .service("klondikeGame", ["scoring", KlondikeGame]);
-
-
-
-
-
-
 
   function KlondikeGame(scoring) {
     this.newGame = function newGame() {
@@ -70,4 +67,4 @@
     }
   };
 
-})();
+

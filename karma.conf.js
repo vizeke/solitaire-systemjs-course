@@ -10,24 +10,35 @@ module.exports = function (config) {
     files: [
       "app/bower_components/angular/angular.js",
       "app/bower_components/angular-route/angular-route.js",
-      "app/bower_components/angular-mocks/angular-mocks.js",
-      "app/bower_components/underscore/underscore.js",
-      "app/cards/**/*.js",
-      "app/klondike/piles/pile.js",
-      "app/klondike/piles/foundationPile.js",
-      "app/klondike/piles/remainderPile.js",
-      "app/klondike/piles/tableauPile.js",
-      "app/klondike/*.js",
-      "tests/**/*.js"
+      "app/bower_components/angular-mocks/angular-mocks.js"
     ],
+
+    proxies: {
+      "/node_modules": "/base/node_modules",
+      "/base/cards": "/base/app/cards",
+      "/base/jspm_packages": "/base/app/jspm_packages"
+    },
+
+    jspm: {
+      serveFiles: [
+        "app/**/*.js",
+        "node_modules/babel-core/browser.js"
+      ],
+      
+      loadFiles: [
+        "tests/cards/*.js",
+        "tests/klondike/**/*.js"
+      ]
+    },
 
     autoWatch: true,
 
-    frameworks: ["jasmine"],
+    frameworks: ["jspm", "jasmine"],
 
-    browsers: ["Chrome", "Firefox"],
+    browsers: ["Chrome"],
 
     plugins: [
+      "karma-jspm",
       "karma-chrome-launcher",
       "karma-firefox-launcher",
       "karma-jasmine",
